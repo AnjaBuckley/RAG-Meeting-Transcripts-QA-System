@@ -1,6 +1,6 @@
 # RAG Meeting QA System
 
-Welcome to your local Retrieval-Augmented Generation (RAG) Meeting QA system! This project lets you ask questions about your meeting transcripts using state-of-the-art language models and embeddings—all running locally on your machine.
+Welcome to your local Retrieval-Augmented Generation (RAG) Meeting QA system! This project lets you ask questions about your meeting transcripts using ollama language models and embeddings—all running locally on your machine.
 
 ## 🚀 What does it do?
 - Loads your meeting transcripts (as `.txt` files)
@@ -8,7 +8,7 @@ Welcome to your local Retrieval-Augmented Generation (RAG) Meeting QA system! Th
 - Embeds them using HuggingFace models
 - Stores them in a local Chroma vector database
 - Lets you ask questions and get answers (with sources!) using a local Ollama LLM (like qwen3)
-- **Now includes a Streamlit interface for easy local interaction!**
+- **Also includes a Streamlit interface for easy local interaction!**
 
 ## 🛠️ Setup Instructions
 
