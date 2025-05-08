@@ -7,9 +7,9 @@ from rag_meeting_qa import (
 )
 
 st.set_page_config(
-    page_title="Reliagility Customer Transcript RAG Agent", layout="centered"
+    page_title="RAG Meeting Transcripts QA System", layout="centered"
 )
-st.title("Reliagility Customer Transcript RAG Agent")
+st.title("RAG Meeting Transcripts QA System")
 st.write("Ask questions about your meeting transcripts. All data stays local.")
 
 
