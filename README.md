@@ -35,9 +35,9 @@ uv pip install -r requirements.txt
 
 ### 4. Start your Ollama model
 - Make sure you have [Ollama](https://ollama.com/) installed and running locally.
-- Pull a model (e.g., qwen3):
+- Pull a model (e.g., qwen3:8b):
   ```
-  ollama pull qwen3
+  ollama pull qwen3:8b
   ollama serve
   ```
 
