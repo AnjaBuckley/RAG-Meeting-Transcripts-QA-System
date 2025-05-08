@@ -1,4 +1,4 @@
-# RAG Meeting QA System
+# RAG Meeting Transcripts QA System
 
 Welcome to your local Retrieval-Augmented Generation (RAG) Meeting QA system! This project lets you ask questions about your meeting transcripts using ollama language models and embeddings—all running locally on your machine.
 
