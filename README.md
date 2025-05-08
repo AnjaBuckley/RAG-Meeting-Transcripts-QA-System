@@ -57,7 +57,9 @@ Answer: ...
 Sources:
 - [First 100 characters of the relevant transcript chunk...]
 
+```
 #### **B. Streamlit Interface (Recommended for local use!)**
+
 ```
 pip install streamlit  # if not already installed
 streamlit run rag_streamlit.py
