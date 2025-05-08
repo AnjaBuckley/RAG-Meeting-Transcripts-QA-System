@@ -66,7 +66,7 @@ streamlit run rag_streamlit.py
 ```
 - This will open a browser window at http://localhost:8501 where you can interact with your RAG system using a simple UI.
 
-```
+
 ## 🧩 Troubleshooting
 - **Ollama not found?** Make sure it's installed and running (`ollama serve`).
 - **No transcripts found?** Ensure your `.txt` files are in the `meeting_transcripts` folder.
