@@ -7,7 +7,7 @@ Welcome to your local Retrieval-Augmented Generation (RAG) Meeting QA system! Th
 - Splits them into smart, searchable chunks
 - Embeds them using HuggingFace models
 - Stores them in a local Chroma vector database
-- Lets you ask questions and get answers (with sources!) using a local Ollama LLM (like Llama 2)
+- Lets you ask questions and get answers (with sources!) using a local Ollama LLM (like qwen3)
 - **Now includes a Streamlit interface for easy local interaction!**
 
 ## 🛠️ Setup Instructions
@@ -35,9 +35,9 @@ uv pip install -r requirements.txt
 
 ### 4. Start your Ollama model
 - Make sure you have [Ollama](https://ollama.com/) installed and running locally.
-- Pull a model (e.g., Llama 2):
+- Pull a model (e.g., qwen3):
   ```
-  ollama pull llama2
+  ollama pull qwen3
   ollama serve
   ```
 
