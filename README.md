@@ -124,8 +124,32 @@ streamlit run rag_streamlit.py
   - To remove the container: `docker rm rag-meeting-qa`
 
 ## 📚 How it works
-This project uses [LangChain](https://python.langchain.com/), [ChromaDB](https://www.trychroma.com/), [HuggingFace Sentence Transformers](https://www.sbert.net/), [Ollama](https://ollama.com/), and [Streamlit](https://streamlit.io/) to create a fully local, private, and powerful QA system for your meeting notes.
+This project uses a combination of powerful open-source tools and techniques to provide a fully local, private, and effective QA system for your meeting notes:
+
+- **[LangChain](https://python.langchain.com/):** Orchestrates the overall RAG pipeline, from document processing to answer generation.
+- **[Ollama](https://ollama.com/):** Provides the local Large Language Model (LLM) (e.g., `qwen3:8b`) that powers both the generation of hypothetical documents and the final question answering.
+- **[HuggingFace Sentence Transformers](https://www.sbert.net/):** Used for:
+    - Generating dense vector embeddings of document chunks for efficient similarity search.
+    - Providing the cross-encoder model for re-ranking retrieved documents.
+- **[ChromaDB](https://www.trychroma.com/):** Serves as the local vector store for storing and querying the embedded document chunks.
+- **[Streamlit](https://streamlit.io/):** Creates the user-friendly web interface for interacting with the QA system.
+
+To improve answer quality and relevance, the system incorporates several advanced techniques:
+
+1.  **Document Processing:**
+    - Transcripts are loaded and split into manageable, overlapping chunks.
+    - These chunks are then embedded using a `sentence-transformers` model (specifically `all-MiniLM-L6-v2` by default) and stored in ChromaDB.
+
+2.  **Advanced Retrieval with HyDE and Re-ranking:**
+    - **Hypothetical Document Embeddings (HyDE):** When you ask a question, the system doesn't directly use your raw query for searching. Instead, it first prompts the Ollama LLM to generate a *hypothetical* document that it believes would be a perfect answer to your query. The embedding of this generated hypothetical document is then used to retrieve the most similar real document chunks from your transcripts stored in ChromaDB. This approach often leads to more relevant initial retrieval results.
+    - **Cross-Encoder Re-ranking:** After the initial set of documents is retrieved (via HyDE), a `sentence-transformers` cross-encoder model (specifically `cross-encoder/ms-marco-MiniLM-L-6-v2`) is used to re-rank these document chunks. The cross-encoder takes the original user query and each retrieved document, outputting a relevance score. This allows the system to refine the order of documents, prioritizing the most pertinent information before passing them to the LLM for final answer generation.
+
+3.  **Answer Generation:**
+    - The top N re-ranked documents are combined with your original question and presented to the Ollama LLM.
+    - The LLM then generates a comprehensive answer based on the provided context, along with source attribution from your transcripts.
+
+This multi-step process, especially the HyDE and re-ranking stages, aims to provide more accurate and contextually relevant answers to your questions, all while keeping your data private on your local machine.
 
 ---
 
-Enjoy asking questions about your meetings! If you have ideas or run into issues, feel free to open an issue or contribute. 
+Enjoy asking questions about your meetings! If you have ideas or run into issues, feel free to open an issue or contribute.
